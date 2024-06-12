@@ -219,6 +219,7 @@ exports.CreateRequest = asyncHandler(async (req, res, next) => {
 			requestType: req.body.requestType,
 			requestForm: req.body.requestForm,
 			id: req.user.id,
+
 			methode: req.body.methode,
 			filename: req.file?.filename, // Add the filename obtained from req.file
 			filepath: req.file?.path // Add the filepath obtained from req.file
@@ -376,6 +377,7 @@ exports.updateRequest = asyncHandler(async (req, res, next) => {
 
 		const updateUser = {
 			...rest,
+			cid: null,
 			filename: req.file?.filename || req.body?.filename, // Use the filename obtained from req.file if available, otherwise fallback to req.body.filename
 			filepath: req.file?.path || req.body?.path, // Use the filepath obtained from req.file if available, otherwise fallback to req.body.path
 			createAt: rest.createAt, // Use the existing format for createAt

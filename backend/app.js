@@ -59,17 +59,7 @@ app.use((error, req, res, next) => {
 })
 
 // Serve images from the 'uploads' directory
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
-
-const baseUrl =
-	process.env.NODE_ENV === 'development'
-		? 'http://localhost:5000/uploads'
-		: 'https://smartaccountbookv1.onrender.com/uploads'
-
-app.get('/file', (req, res) => {
-	// Example endpoint to return the base URL for static files
-	res.json({ baseUrl })
-})
+app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')))
 
 // Deployment settings
 if (process.env.NODE_ENV === 'production') {
