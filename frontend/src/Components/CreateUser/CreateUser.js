@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import styles from './CreateUser.module.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { expanseActions } from '../../store/ExpanseSlice'
 import { createUser } from '../../Actions/userAction'
 const CreateUser = ({ header }) => {
 	const [formValid, setFormValid] = useState(true)
 	// const notification = useSelector(state => state.customer.notification)
 	const [formSubmit, setFormSubmit] = useState(false)
 	const dispatch = useDispatch()
-	const [error, setHasError] = useState(false)
 	// Initial state for inputs
 	const initialInputsState = {
 		name: { value: '', isValid: true },

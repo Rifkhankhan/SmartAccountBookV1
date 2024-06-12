@@ -7,7 +7,6 @@ const ReceiptForm = ({ header }) => {
 	// const notification = useSelector(state => state.customer.notification)
 	const [formSubmit, setFormSubmit] = useState(false)
 	const dispatch = useDispatch()
-	const [error, setHasError] = useState(false)
 	// Initial state for inputs
 	const initialInputsState = {
 		amount: { value: '', isValid: true },

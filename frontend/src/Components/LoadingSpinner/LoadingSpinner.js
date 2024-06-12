@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Modal } from 'react-bootstrap'
 import { GridLoader } from 'react-spinners'
-import ClipLoader from 'react-spinners/ClipLoader'
 
 const LoadingSpinner = props => {
 	const [size, setSize] = useState(50)
