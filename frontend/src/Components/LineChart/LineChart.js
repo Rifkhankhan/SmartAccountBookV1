@@ -43,8 +43,9 @@ const LineChart = ({ expenses, receipts, requestList }) => {
 	// for expense
 
 	const [amountByDate, setAmountByDate] = useState({})
-	const [receiptByDate, setReceiptByDate] = useState({})
 	const [listByDate, setListByDate] = useState({})
+
+	const [receiptByDate, setReceiptByDate] = useState({})
 
 	const receiptLine = receipts => {
 		const today = new Date()
@@ -72,7 +73,10 @@ const LineChart = ({ expenses, receipts, requestList }) => {
 			const amounts = receiptsByDate[date].map(receipt =>
 				parseInt(receipt.amount)
 			)
-			sumsByDate[date] = amounts.reduce((total, amount) => total + amount, 0)
+			sumsByDate[date] = {
+				sum: amounts.reduce((total, amount) => total + amount, 0),
+				date: date
+			}
 		}
 
 		setReceiptByDate(sumsByDate)
@@ -104,7 +108,10 @@ const LineChart = ({ expenses, receipts, requestList }) => {
 			const amounts = receiptsByDate[date].map(receipt =>
 				parseInt(receipt.amount)
 			)
-			sumsByDate[date] = amounts.reduce((total, amount) => total + +amount, 0)
+			sumsByDate[date] = {
+				sum: amounts.reduce((total, amount) => total + amount, 0),
+				date: date
+			}
 		}
 
 		setAmountByDate(sumsByDate)
@@ -130,7 +137,6 @@ const LineChart = ({ expenses, receipts, requestList }) => {
 			receiptsByDate[date].push(receipt)
 		})
 
-		console.log(receiptsByDate)
 		// Step 3: Calculate sum of amounts for each date
 		const balances = {}
 		for (const date in receiptsByDate) {
@@ -145,11 +151,14 @@ const LineChart = ({ expenses, receipts, requestList }) => {
 				}
 			})
 
-			const balance = +totalIncome - +totalExpense
-			balances[date] = balance
-		}
+			// const balance = +totalIncome - +totalExpense
+			// balances[date] = balance
 
-		console.log(balances)
+			balances[date] = {
+				sum: +totalIncome - +totalExpense,
+				date: date
+			}
+		}
 
 		setListByDate(balances)
 	}
@@ -166,25 +175,34 @@ const LineChart = ({ expenses, receipts, requestList }) => {
 	const balanceList = Object.values(listByDate)
 
 	const data = {
-		labels: [...labels],
+		labels: labels,
 		datasets: [
 			{
 				label: 'Income',
-				data: receiptsLists,
+				data: labels.map(date => {
+					const found = receiptsLists.find(item => item.date === date)
+					return found ? found.sum : 0
+				}),
 				backgroundColor: 'aqua',
 				borderColor: 'yellow',
 				pointBorderColor: 'aqua'
 			},
 			{
 				label: 'Expense',
-				data: amounts,
+				data: labels.map(date => {
+					const found = amounts.find(item => item.date === date)
+					return found ? found.sum : 0
+				}),
 				backgroundColor: 'red',
 				borderColor: 'aqua',
 				pointBorderColor: 'red'
 			},
 			{
 				label: 'Balance',
-				data: balanceList,
+				data: labels.map(date => {
+					const found = balanceList.find(item => item.date === date)
+					return found ? found.sum : 0
+				}),
 				backgroundColor: 'orange',
 				borderColor: 'green',
 				pointBorderColor: 'orange'

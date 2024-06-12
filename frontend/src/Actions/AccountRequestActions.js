@@ -1,6 +1,8 @@
 import swal from 'sweetalert'
 import * as AccountRequestApis from '../Apis/AccountRequestApis'
 import { AccountRequestActions } from '../store/AccountRequestSlice'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 export const createAccountRequest = formData => async dispatch => {
 	dispatch(AccountRequestActions.handleLoading())
@@ -10,18 +12,31 @@ export const createAccountRequest = formData => async dispatch => {
 		if (data.success) {
 			dispatch(AccountRequestActions.createAccountRequest(data.requests))
 			swal('Successfully Created!', 'Now You can Continue', 'success')
+			toast.success('Completed Successfully!', {
+				autoClose: 2000
+			})
 		}
 	} catch (error) {
 		if (error.response?.status === 400) {
-			swal('Oops! Something Wrong', error.response.data.message, 'error')
+			toast.error(`Oops! Something Wrong: ${error.response.data.message}`, {
+				autoClose: 2000
+			})
 		} else if (error.response?.status === 404) {
-			swal("You don't have Account", error.response.data.message, 'error')
+			toast.error(`You don't have an Account: ${error.response.data.message}`, {
+				autoClose: 2000
+			})
 		} else if (error.response?.status === 409) {
-			swal('Oops! Something Wrong', error.response.data.message, 'error')
+			toast.error(`Oops! You have no access: ${error.response.data.message}`, {
+				autoClose: 2000
+			})
 		} else if (error.response?.status === 408) {
-			swal('Oops! You have no access', error.response.data.message, 'error')
+			toast.error(`Internal Server Error: ${error.response.data.message}`, {
+				autoClose: 2000
+			})
 		} else if (error.response?.status === 500) {
-			swal('Internal Server Error', error.response.data.message, 'error')
+			toast.error(`Internal Server Error: ${error.response.data.message}`, {
+				autoClose: 2000
+			})
 		}
 	}
 	dispatch(AccountRequestActions.handleLoading())
@@ -37,15 +52,25 @@ export const getAccountRequests = () => async dispatch => {
 		}
 	} catch (error) {
 		if (error.response?.status === 400) {
-			swal('Oops! Something Wrong', error.response.data.message, 'error')
+			toast.error(`Oops! Something Wrong: ${error.response.data.message}`, {
+				autoClose: 2000
+			})
 		} else if (error.response?.status === 404) {
-			swal("You don't have Account", error.response.data.message, 'error')
+			toast.error(`You don't have an Account: ${error.response.data.message}`, {
+				autoClose: 2000
+			})
 		} else if (error.response?.status === 409) {
-			swal('Oops! Something Wrong', error.response.data.message, 'error')
+			toast.error(`Oops! You have no access: ${error.response.data.message}`, {
+				autoClose: 2000
+			})
 		} else if (error.response?.status === 408) {
-			swal('Oops! You have no access', error.response.data.message, 'error')
+			toast.error(`Internal Server Error: ${error.response.data.message}`, {
+				autoClose: 2000
+			})
 		} else if (error.response?.status === 500) {
-			swal('Internal Server Error', error.response.data.message, 'error')
+			toast.error(`Internal Server Error: ${error.response.data.message}`, {
+				autoClose: 2000
+			})
 		}
 	}
 	dispatch(AccountRequestActions.handleLoading())
@@ -61,19 +86,31 @@ export const updateAccountRequest = (formData, datas) => async dispatch => {
 		)
 		if (data.success) {
 			dispatch(AccountRequestActions.createAccountRequest(data.requests))
-			swal('Successfully Updated!', 'Now You can Continue', 'success')
+			toast.success('Updated Successfully!', {
+				autoClose: 2000
+			})
 		}
 	} catch (error) {
 		if (error.response?.status === 400) {
-			swal('Oops! Something Wrong', error.response.data.message, 'error')
+			toast.error(`Oops! Something Wrong: ${error.response.data.message}`, {
+				autoClose: 2000
+			})
 		} else if (error.response?.status === 404) {
-			swal("You don't have Account", error.response.data.message, 'error')
+			toast.error(`You don't have an Account: ${error.response.data.message}`, {
+				autoClose: 2000
+			})
 		} else if (error.response?.status === 409) {
-			swal('Oops! Something Wrong', error.response.data.message, 'error')
+			toast.error(`Oops! You have no access: ${error.response.data.message}`, {
+				autoClose: 2000
+			})
 		} else if (error.response?.status === 408) {
-			swal('Oops! You have no access', error.response.data.message, 'error')
+			toast.error(`Internal Server Error: ${error.response.data.message}`, {
+				autoClose: 2000
+			})
 		} else if (error.response?.status === 500) {
-			swal('Internal Server Error', error.response.data.message, 'error')
+			toast.error(`Internal Server Error: ${error.response.data.message}`, {
+				autoClose: 2000
+			})
 		}
 	}
 	dispatch(AccountRequestActions.handleLoading())
@@ -86,21 +123,33 @@ export const deleteAccountRequest = formData => async dispatch => {
 
 		if (data.success) {
 			dispatch(AccountRequestActions.deleteAccountRequest(data.product))
-			swal('Successfully Deleted!', 'Now You can Continue', 'success')
+			toast.success('Deleted Successfully!', {
+				autoClose: 2000
+			})
 		} else {
 			swal('Oops! Something Wrong', 'Try again please!', 'error')
 		}
 	} catch (error) {
 		if (error.response?.status === 400) {
-			swal('Oops! Something Wrong', error.response.data.message, 'error')
+			toast.error(`Oops! Something Wrong: ${error.response.data.message}`, {
+				autoClose: 2000
+			})
 		} else if (error.response?.status === 404) {
-			swal("You don't have Account", error.response.data.message, 'error')
+			toast.error(`You don't have an Account: ${error.response.data.message}`, {
+				autoClose: 2000
+			})
 		} else if (error.response?.status === 409) {
-			swal('Oops! Something Wrong', error.response.data.message, 'error')
+			toast.error(`Oops! You have no access: ${error.response.data.message}`, {
+				autoClose: 2000
+			})
 		} else if (error.response?.status === 408) {
-			swal('Oops! You have no access', error.response.data.message, 'error')
+			toast.error(`Internal Server Error: ${error.response.data.message}`, {
+				autoClose: 2000
+			})
 		} else if (error.response?.status === 500) {
-			swal('Internal Server Error', error.response.data.message, 'error')
+			toast.error(`Internal Server Error: ${error.response.data.message}`, {
+				autoClose: 2000
+			})
 		}
 	}
 	dispatch(AccountRequestActions.handleLoading())

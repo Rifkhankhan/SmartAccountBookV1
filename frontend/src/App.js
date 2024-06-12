@@ -1,6 +1,7 @@
 import './App.css'
 import { Provider, useDispatch, useSelector } from 'react-redux'
-
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { BrowserRouter, useNavigate } from 'react-router-dom'
 import Footer from './Components/Footer/Footer'
@@ -13,6 +14,7 @@ function App() {
 			<Provider store={store}>
 				<div className="App">
 					<Routers />
+					<ToastContainer />
 					<Footer />
 				</div>
 			</Provider>
