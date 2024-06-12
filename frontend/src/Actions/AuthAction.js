@@ -89,6 +89,8 @@ export const autoLogin = () => async dispatch => {
 			swal('Oops! Something Wrong', error.response.data.message, 'error')
 		} else if (error.response?.status === 404) {
 			swal("You don't have Account", error.response.data.message, 'error')
+		} else if (error.response?.status === 401) {
+			console.log(error.response.data.message)
 		} else if (error.response?.status === 409) {
 			swal('Oops! Something Wrong', error.response.data.message, 'error')
 		} else if (error.response?.status === 408) {
@@ -101,5 +103,6 @@ export const autoLogin = () => async dispatch => {
 			swal('Oops! Something Wrong', ' You are Logged Out!', 'info')
 		}
 	}
+
 	dispatch(authActions.handleLoading())
 }
