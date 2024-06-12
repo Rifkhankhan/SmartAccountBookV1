@@ -59,7 +59,12 @@ app.use((error, req, res, next) => {
 })
 
 // Serve images from the 'uploads' directory
-app.use('/uploads', express.static('uploads'))
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
+
+// app.get('/file', (req, res) => {
+// 	// Example endpoint to return the base URL for static files
+// 	res.json({ 	process.env.NODE_ENV === 'development' ? 'http://localhost:5000' : '' })
+// })
 
 // Deployment settings
 if (process.env.NODE_ENV === 'production') {
