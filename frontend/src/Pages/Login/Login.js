@@ -65,6 +65,8 @@ const Login = props => {
 			return
 		}
 
+		console.log(data)
+
 		dispatch(logIn(data))
 		setFormSubmit(true)
 		setInputs(initialInputsState)

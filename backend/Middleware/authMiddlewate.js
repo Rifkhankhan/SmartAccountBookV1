@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken')
-const UserModel = require('./../Models/UserModel')
 const asyncHandler = require('./asyncHandler')
+const pool = require('../MysqlConnection')
 
 exports.protect = asyncHandler(async (req, res, next) => {
 	let token
@@ -9,15 +9,24 @@ exports.protect = asyncHandler(async (req, res, next) => {
 
 	token = req.cookies.jwt
 
-	console.log(req.cookies)
 	if (token) {
 		try {
 			const decodeToken = jwt.verify(token, process.env.SECRET_KEY)
 
-			req.user = await UserModel.findById(decodeToken.userId).select(
-				'-password'
-			)
-			next()
+			// finding user by email
+
+			const [user] = await pool.query('SELECT * FROM users WHERE id = ?', [
+				decodeToken.id
+			])
+
+			if (!user || user.length === 0) {
+				console.error('User not found or empty result')
+				// Handle the case where the user is not found or the result is empty
+			} else {
+				req.user = user[0]
+
+				next()
+			}
 		} catch (error) {
 			res.status(401)
 			throw new Error('Not authorized , token failed')

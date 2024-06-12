@@ -31,14 +31,8 @@ export const logIn = formData => async dispatch => {
 export const logout = () => async dispatch => {
 	dispatch(authActions.handleLoading())
 	try {
-		const token = window.localStorage.getItem('token')
-
-		if (!!token) {
-			await AuthApi.logout(token)
-			dispatch(authActions.logout())
-		} else {
-			dispatch(authActions.logout())
-		}
+		await AuthApi.logout()
+		dispatch(authActions.logout())
 	} catch (error) {
 		console.log(error)
 		if (error.response?.status === 400) {
@@ -85,14 +79,10 @@ export const logoutUserAccount = id => async dispatch => {
 export const autoLogin = () => async dispatch => {
 	dispatch(authActions.handleLoading())
 	try {
-		const token = window.localStorage.getItem('token')
-		if (!!token) {
-			const { data } = await AuthApi.autoLogin(token)
-			if (data.success) {
-				dispatch(authActions.autoLogin(data))
-			}
-		} else {
-			dispatch(authActions.autoLogin())
+		const { data } = await AuthApi.autoLogin()
+
+		if (data.success) {
+			dispatch(authActions.autoLogin(data))
 		}
 	} catch (error) {
 		if (error.response?.status === 400) {

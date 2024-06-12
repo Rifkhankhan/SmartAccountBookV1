@@ -27,8 +27,6 @@ const UserActivityTable = ({
 			String(item.arid).toLowerCase().includes(filter.toLowerCase())
 	)
 
-	console.log(initialData)
-
 	// Sort filtered data based on login time
 	const sortedData = filteredData.sort(
 		(a, b) => new Date(a.logintime) - new Date(b.logintime)

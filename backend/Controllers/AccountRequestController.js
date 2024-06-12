@@ -200,10 +200,10 @@ const { v4: uuid } = require('uuid')
 // }
 
 const pool = require('../MysqlConnection')
-const multer = require('multer')
-const { now } = require('lodash')
 
-exports.CreateRequest = async (req, res, next) => {
+const asyncHandler = require('../Middleware/asyncHandler')
+
+exports.CreateRequest = asyncHandler(async (req, res, next) => {
 	// Access file information
 	const file = req.file
 
@@ -218,7 +218,7 @@ exports.CreateRequest = async (req, res, next) => {
 			narration: req.body.narration,
 			requestType: req.body.requestType,
 			requestForm: req.body.requestForm,
-			id: req.body?.id,
+			id: req.user.id,
 			methode: req.body.methode,
 			filename: req.file?.filename, // Add the filename obtained from req.file
 			filepath: req.file?.path // Add the filepath obtained from req.file
@@ -240,11 +240,9 @@ exports.CreateRequest = async (req, res, next) => {
 
 		//.....................................................finished account request table insertion
 
-		const { id, ...rest } = req.body
-
 		const requestProduct = {
 			...request[0],
-			id: id,
+			id: req.user.id,
 			arid: result.insertId
 		}
 
@@ -272,30 +270,19 @@ exports.CreateRequest = async (req, res, next) => {
 
 		return next(err)
 	}
-}
+})
 // get all products
-exports.getRequests = async (req, res, next) => {
+exports.getRequests = asyncHandler(async (req, res, next) => {
 	try {
-		;[products] = await pool.query('select * from accountrequest ')
+		const [products] = await pool.query('select * from accountrequest ')
 		res.json({ success: true, product: products })
 	} catch (err) {
 		return next(err)
 	}
-}
+})
 
 // //get all products of a shop
-exports.ToggleRequest = async (req, res, next) => {
-	// i need user id and arid
-	// arid: 11,
-	// amount: '20000',
-	// requestType: 'expense',
-	// requestForm: 'expense',
-	// date: '2024-03-12',
-	// narration: 'expense fewfwefw chnaged now',
-	// id: 2,
-	// status: 1,
-	// balance: 196284
-
+exports.ToggleRequest = asyncHandler(async (req, res, next) => {
 	const { balance, ...rest } = req.body
 	try {
 		const [product, fields] = await pool.query(
@@ -309,7 +296,7 @@ exports.ToggleRequest = async (req, res, next) => {
 			...product[0],
 			...rest,
 			status: product[0].status ? 1 : 0,
-			id: req.body.id,
+			id: req.user.id,
 			createAt: rest.createAt
 		}
 
@@ -371,10 +358,10 @@ exports.ToggleRequest = async (req, res, next) => {
 		console.log(err)
 		return next(err)
 	}
-}
+})
 
 // //get all products of a shop
-exports.updateRequest = async (req, res, next) => {
+exports.updateRequest = asyncHandler(async (req, res, next) => {
 	try {
 		const { arid, file, ...rest } = req.body
 		console.log(rest)
@@ -445,9 +432,9 @@ exports.updateRequest = async (req, res, next) => {
 
 		return next(err)
 	}
-}
+})
 // get product
-exports.getRequest = async (req, res, next) => {
+exports.getRequest = asyncHandler(async (req, res, next) => {
 	const { id } = req.params.id
 
 	try {
@@ -456,7 +443,7 @@ exports.getRequest = async (req, res, next) => {
 	} catch (err) {
 		return next(err)
 	}
-}
+})
 // const queryPreviousDayRecord = () => {
 // 	try {
 // 		AccountRequestModel.findOne({

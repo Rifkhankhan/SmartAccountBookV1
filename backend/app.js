@@ -7,14 +7,16 @@ const dotenv = require('dotenv')
 const userrouter = require('./Routes/userrouter')
 const AccountRequestRouter = require('./Routes/AccountRequestRouter')
 const RequestRouter = require('./Routes/RequestRouter')
+const cookieParser = require('cookie-parser')
+
 dotenv.config()
 
 const app = express()
 const PORT = process.env.PORT || 5000
-
+// Middleware setup
+app.use(cookieParser())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
-app.use(cors())
 
 // Allow requests from all origins
 
@@ -30,6 +32,7 @@ const corsOptions = {
 			? 'http://localhost:3000'
 			: 'https://smartaccountbookv1.onrender.com', // Set your frontend URL in production
 
+	credentials: true, // Allow credentials (cookies)
 	optionsSuccessStatus: 200
 }
 

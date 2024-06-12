@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import Home from '../Pages/Home/Home'
 import Payment from '../Pages/Payment/Payment'
 import Receipt from '../Pages/Receipt/Receipt'
@@ -13,7 +13,6 @@ import { getAccountRequests } from '../Actions/AccountRequestActions'
 
 import LoadingSpinner from '../Components/LoadingSpinner/LoadingSpinner'
 import { autoLogin } from '../Actions/AuthAction'
-import { getUsers } from '../Actions/userAction'
 
 const Routers = () => {
 	const dispatch = useDispatch()
@@ -22,10 +21,13 @@ const Routers = () => {
 
 	const currentUser = useSelector(state => state.auth.user)
 	useEffect(() => {
-		dispatch(autoLogin())
-		dispatch(getAccountRequests())
-		dispatch(getUsers())
-	}, [dispatch])
+		if (!isAuthenticated) {
+			dispatch(autoLogin())
+		}
+		if (isAuthenticated) {
+			dispatch(getAccountRequests())
+		}
+	}, [isAuthenticated])
 
 	return (
 		<>
@@ -42,40 +44,35 @@ const Routers = () => {
 				<Route
 					path="/"
 					index
-					element={isAuthenticated ? <Home /> : <Login to="/login" />}
+					element={isAuthenticated ? <Home /> : <Login />}
 				/>
 
 				<Route
 					path="/home"
 					index
-					element={isAuthenticated ? <Home /> : <Login to="/login" />}
+					element={isAuthenticated ? <Home /> : <Login />}
 				/>
 				<Route
 					path="/payment"
-					element={isAuthenticated ? <Payment /> : <Login to="/login" />}
+					element={isAuthenticated ? <Payment /> : <Login />}
 				/>
 				<Route
 					path="/receipt"
-					element={isAuthenticated ? <Receipt /> : <Login to="/login" />}
+					element={isAuthenticated ? <Receipt /> : <Login />}
 				/>
 				<Route
 					path="/advance"
-					element={isAuthenticated ? <Advance /> : <Login to="/login" />}
+					element={isAuthenticated ? <Advance /> : <Login />}
 				/>
-				<Route
-					path="/loan"
-					element={isAuthenticated ? <Loan /> : <Login to="/login" />}
-				/>
+				<Route path="/loan" element={isAuthenticated ? <Loan /> : <Login />} />
 				<Route
 					path="/users"
 					element={
-						isAuthenticated && currentUser.isAdmin ? (
-							<Users />
-						) : (
-							<Login to="/login" />
-						)
+						isAuthenticated && currentUser.isAdmin ? <Users /> : <Login />
 					}
 				/>
+
+				<Route path="*" element={<Login />} />
 			</Routes>
 		</>
 	)

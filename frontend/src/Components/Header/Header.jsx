@@ -41,11 +41,6 @@ function Header() {
 	const [menuOpen, setMenuOpen] = useState(false)
 	const [showCloseButton, setShowCloseButton] = useState(false)
 
-	function toggleMenu() {
-		setMenuOpen(!menuOpen)
-		setShowCloseButton(!showCloseButton)
-	}
-
 	const toggleSidebar = () => {
 		setIsSidebarOpen(!isSidebarOpen)
 		setMenuOpen(!menuOpen)

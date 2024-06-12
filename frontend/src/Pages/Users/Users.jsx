@@ -8,7 +8,7 @@ import CreateUser from '../../Components/CreateUser/CreateUser'
 import image from './../../Images/man.png'
 import UsersTable from '../../Components/UsersTable/UsersTable'
 import Model from '../../Components/Model/Model'
-import { getUserActivities } from '../../Actions/userAction'
+import { getUserActivities, getUsers } from '../../Actions/userAction'
 import ResetPasswordModel from '../../Components/ResetPasswordModel/ResetPasswordModel'
 import DataActivityTable from '../../Components/DataActivityTable/DataActivityTable'
 import UserActivityTable from '../../Components/UserActivityTable/UserActivityTable'
@@ -46,6 +46,7 @@ const Users = () => {
 	}
 
 	useEffect(() => {
+		dispatch(getUsers())
 		dispatch(getAccountRequests())
 		dispatch(getRequests())
 		dispatch(getUserActivities())

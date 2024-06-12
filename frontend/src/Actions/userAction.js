@@ -101,9 +101,6 @@ export const getUserActivities = () => async (dispatch, getState) => {
 		// dispatch(uiActions.changeAsLoading())
 		const { data } = await UserApi.getUserActivities()
 		if (data.success) {
-			console.log('====================================')
-			console.log(data)
-			console.log('====================================')
 			dispatch(userActions.getUserActivities(data.product))
 		} else {
 			swal('Oops! Something Wrong', 'Try again please!', 'error')
