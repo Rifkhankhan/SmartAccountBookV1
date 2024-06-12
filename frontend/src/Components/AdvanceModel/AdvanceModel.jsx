@@ -570,7 +570,11 @@ const AdvanceModel = ({
 								clickedRow?.filename !== null &&
 								clickedRow?.filename !== 'null' && (
 									<img
-										src={`http://localhost:5000/uploads/${clickedRow?.filename}`}
+										src={
+											process.env.NODE_ENV === 'development'
+												? `http://localhost:5000/uploads/${clickedRow?.filename}`
+												: `https://smartaccountbookv1.onrender.com/uploads/${clickedRow?.filename}`
+										}
 										alt="Uploaded"
 										style={{ width: '100%', maxHeight: '50vh' }}
 									/>
