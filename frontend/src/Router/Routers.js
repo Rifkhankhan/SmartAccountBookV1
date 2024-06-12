@@ -40,13 +40,11 @@ const Routers = () => {
 						element={!isAuthenticated ? <Login /> : <Home />}
 					/>
 				}
-
 				<Route
 					path="/"
 					index
 					element={isAuthenticated ? <Home /> : <Login />}
 				/>
-
 				<Route
 					path="/home"
 					index
@@ -71,8 +69,6 @@ const Routers = () => {
 						isAuthenticated && currentUser.isAdmin ? <Users /> : <Login />
 					}
 				/>
-
-				<Route path="*" element={<Login />} />
 			</Routes>
 		</>
 	)

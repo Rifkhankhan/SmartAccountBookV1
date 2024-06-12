@@ -96,7 +96,7 @@ export const autoLogin = () => async dispatch => {
 		} else if (error.response?.status === 408) {
 			swal('Oops! You have no access', error.response.data.message, 'error')
 		} else if (error.response?.status === 500) {
-			swal('Internal Server Error', error.response.data.message, 'error')
+			console.log(error.response.data.message)
 		} else if (error.response?.status === 405) {
 			dispatch(authActions.autoLogin())
 

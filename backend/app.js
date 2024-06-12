@@ -27,10 +27,7 @@ const { notFound, errorHandler } = require('./Middleware/errorMiddleware')
 
 // CORS configuration
 const corsOptions = {
-	origin:
-		process.env.NODE_ENV === 'development'
-			? 'http://localhost:3000'
-			: 'https://smartaccountbookv1.onrender.com', // Set your frontend URL in production
+	origin: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : '', // Set your frontend URL in production
 
 	credentials: true, // Allow credentials (cookies)
 	optionsSuccessStatus: 200
