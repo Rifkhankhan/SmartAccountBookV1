@@ -17,12 +17,23 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors())
 
 // Allow requests from all origins
-app.use(cors())
 
 // Your other middleware and routes
 app.use(express.json())
 
 const { notFound, errorHandler } = require('./Middleware/errorMiddleware')
+
+// CORS configuration
+const corsOptions = {
+	origin:
+		process.env.NODE_ENV === 'development'
+			? 'http://localhost:3000'
+			: 'https://smartaccountbookv1.onrender.com', // Set your frontend URL in production
+
+	optionsSuccessStatus: 200
+}
+
+app.use(cors(corsOptions))
 
 // Define Routes
 // Define your routes here
