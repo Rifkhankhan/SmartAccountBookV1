@@ -13,15 +13,15 @@ export const getRequests = () => async dispatch => {
 		}
 	} catch (error) {
 		if (error.response?.status === 400) {
-			swal('Oops! Something Wrong', error.response.data.message, 'error')
+			swal('Oops! Something Wrong', error?.response?.data?.message, 'error')
 		} else if (error.response?.status === 404) {
-			swal("You don't have Account", error.response.data.message, 'error')
+			swal("You don't have Account", error?.response?.data?.message, 'error')
 		} else if (error.response?.status === 409) {
-			swal('Oops! Something Wrong', error.response.data.message, 'error')
+			swal('Oops! Something Wrong', error?.response?.data?.message, 'error')
 		} else if (error.response?.status === 408) {
-			swal('Oops! You have no access', error.response.data.message, 'error')
+			swal('Oops! You have no access', error?.response?.data?.message, 'error')
 		} else if (error.response?.status === 500) {
-			swal('Internal Server Error', error.response.data.message, 'error')
+			swal('Internal Server Error', error?.response?.data?.message, 'error')
 		}
 	}
 	dispatch(RequestActions.handleLoading())
@@ -39,15 +39,15 @@ export const resetData = formData => async dispatch => {
 		}
 	} catch (error) {
 		if (error.response?.status === 400) {
-			swal('Oops! Something Wrong', error.response.data.message, 'error')
+			swal('Oops! Something Wrong', error?.response?.data?.message, 'error')
 		} else if (error.response?.status === 404) {
-			swal("You don't have Account", error.response.data.message, 'error')
+			swal("You don't have Account", error?.response?.data?.message, 'error')
 		} else if (error.response?.status === 409) {
-			swal('Oops! Something Wrong', error.response.data.message, 'error')
+			swal('Oops! Something Wrong', error?.response?.data?.message, 'error')
 		} else if (error.response?.status === 408) {
-			swal('Oops! You have no access', error.response.data.message, 'error')
+			swal('Oops! You have no access', error?.response?.data?.message, 'error')
 		} else if (error.response?.status === 500) {
-			swal('Internal Server Error', error.response.data.message, 'error')
+			swal('Internal Server Error', error?.response?.data?.message, 'error')
 		}
 	}
 	dispatch(RequestActions.handleLoading())

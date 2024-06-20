@@ -264,7 +264,7 @@ function SummaryTable({ list, handleModel }) {
 								{item.methode === 'transfer'
 									? 'Bank Transfer'
 									: item.methode === 'deposite'
-									? 'Bank Deposite'
+									? 'Bank Deposit'
 									: item.methode}
 							</td>
 							<td style={{ textTransform: 'capitalize' }}>{item.balance}</td>

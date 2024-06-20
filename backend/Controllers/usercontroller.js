@@ -12,6 +12,7 @@ const pool = require('../MysqlConnection')
 // user sign in controller
 exports.usersignin = asyncHandler(async (req, res) => {
 	const { name, password } = req.body
+	console.log(req.body)
 
 	// Check if email and password is provided
 	if (!name || !password) {
@@ -26,11 +27,13 @@ exports.usersignin = asyncHandler(async (req, res) => {
 		const [user] = await pool.query('select * from users where name = ?', [
 			req.body.name
 		])
+		console.log(user)
 
 		// if user doesn't exist
 		if (!user.length) {
 			return res.status(404).json({ message: 'User not found' })
 		}
+		console.log(!user.length)
 
 		if (user[0].isLoggedIn) {
 			return res.status(409).json({ message: 'User Already Logged in' })
@@ -272,7 +275,10 @@ exports.createCustomer = asyncHandler(async (req, res, next) => {
 			loanDeletePermission:
 				req.body.loanDeletePermission === undefined
 					? 'no'
-					: req.body.loanDeletePermission
+					: req.body.loanDeletePermission,
+			pp: req.body.pp === undefined ? 'no' : req.body.pp,
+			epp: req.body.epp === undefined ? 'no' : req.body.epp,
+			cp: req.body.cp === undefined ? 'no' : req.body.cp
 		}
 
 		const columns = Object.keys(newUser).join(',')

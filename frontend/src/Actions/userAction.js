@@ -27,23 +27,29 @@ export const activateToggle = id => async dispatch => {
 		console.log(error)
 
 		if (error.response?.status === 400) {
-			toast.error(`Oops! Something Wrong: ${error.response.data.message}`, {
+			toast.error(`Oops! Something Wrong: ${error?.response?.data?.message}`, {
 				autoClose: 2000
 			})
 		} else if (error.response?.status === 404) {
-			toast.error(`You don't have an Account: ${error.response.data.message}`, {
-				autoClose: 2000
-			})
+			toast.error(
+				`You don't have an Account: ${error?.response?.data?.message}`,
+				{
+					autoClose: 2000
+				}
+			)
 		} else if (error.response?.status === 409) {
-			toast.error(`Oops! You have no access: ${error.response.data.message}`, {
-				autoClose: 2000
-			})
+			toast.error(
+				`Oops! You have no access: ${error?.response?.data?.message}`,
+				{
+					autoClose: 2000
+				}
+			)
 		} else if (error.response?.status === 408) {
-			toast.error(`Internal Server Error: ${error.response.data.message}`, {
+			toast.error(`Internal Server Error: ${error?.response?.data?.message}`, {
 				autoClose: 2000
 			})
 		} else if (error.response?.status === 500) {
-			toast.error(`Internal Server Error: ${error.response.data.message}`, {
+			toast.error(`Internal Server Error: ${error?.response?.data?.message}`, {
 				autoClose: 2000
 			})
 		}
@@ -68,23 +74,29 @@ export const createUser = formData => async dispatch => {
 		// dispatch(uiActions.changeAsLoading())
 	} catch (error) {
 		if (error.response?.status === 400) {
-			toast.error(`Oops! Something Wrong: ${error.response.data.message}`, {
+			toast.error(`Oops! Something Wrong: ${error?.response?.data?.message}`, {
 				autoClose: 2000
 			})
 		} else if (error.response?.status === 404) {
-			toast.error(`You don't have an Account: ${error.response.data.message}`, {
-				autoClose: 2000
-			})
+			toast.error(
+				`You don't have an Account: ${error?.response?.data?.message}`,
+				{
+					autoClose: 2000
+				}
+			)
 		} else if (error.response?.status === 409) {
-			toast.error(`Oops! You have no access: ${error.response.data.message}`, {
-				autoClose: 2000
-			})
+			toast.error(
+				`Oops! You have no access: ${error?.response?.data?.message}`,
+				{
+					autoClose: 2000
+				}
+			)
 		} else if (error.response?.status === 408) {
-			toast.error(`Internal Server Error: ${error.response.data.message}`, {
+			toast.error(`Internal Server Error: ${error?.response?.data?.message}`, {
 				autoClose: 2000
 			})
 		} else if (error.response?.status === 500) {
-			toast.error(`Internal Server Error: ${error.response.data.message}`, {
+			toast.error(`Internal Server Error: ${error?.response?.data?.message}`, {
 				autoClose: 2000
 			})
 		}
@@ -106,23 +118,29 @@ export const getUsers = () => async (dispatch, getState) => {
 		// dispatch(uiActions.changeAsLoading())
 	} catch (error) {
 		if (error.response?.status === 400) {
-			toast.error(`Oops! Something Wrong: ${error.response.data.message}`, {
+			toast.error(`Oops! Something Wrong: ${error?.response?.data?.message}`, {
 				autoClose: 2000
 			})
 		} else if (error.response?.status === 404) {
-			toast.error(`You don't have an Account: ${error.response.data.message}`, {
-				autoClose: 2000
-			})
+			toast.error(
+				`You don't have an Account: ${error?.response?.data?.message}`,
+				{
+					autoClose: 2000
+				}
+			)
 		} else if (error.response?.status === 409) {
-			toast.error(`Oops! You have no access: ${error.response.data.message}`, {
-				autoClose: 2000
-			})
+			toast.error(
+				`Oops! You have no access: ${error?.response?.data?.message}`,
+				{
+					autoClose: 2000
+				}
+			)
 		} else if (error.response?.status === 408) {
-			toast.error(`Internal Server Error: ${error.response.data.message}`, {
+			toast.error(`Internal Server Error: ${error?.response?.data?.message}`, {
 				autoClose: 2000
 			})
 		} else if (error.response?.status === 500) {
-			toast.error(`Internal Server Error: ${error.response.data.message}`, {
+			toast.error(`Internal Server Error: ${error?.response?.data?.message}`, {
 				autoClose: 2000
 			})
 		}
@@ -146,23 +164,29 @@ export const getUserActivities = () => async (dispatch, getState) => {
 		// dispatch(uiActions.changeAsLoading())
 	} catch (error) {
 		if (error.response?.status === 400) {
-			toast.error(`Oops! Something Wrong: ${error.response.data.message}`, {
+			toast.error(`Oops! Something Wrong: ${error?.response?.data?.message}`, {
 				autoClose: 2000
 			})
 		} else if (error.response?.status === 404) {
-			toast.error(`You don't have an Account: ${error.response.data.message}`, {
-				autoClose: 2000
-			})
+			toast.error(
+				`You don't have an Account: ${error?.response?.data?.message}`,
+				{
+					autoClose: 2000
+				}
+			)
 		} else if (error.response?.status === 409) {
-			toast.error(`Oops! You have no access: ${error.response.data.message}`, {
-				autoClose: 2000
-			})
+			toast.error(
+				`Oops! You have no access: ${error?.response?.data?.message}`,
+				{
+					autoClose: 2000
+				}
+			)
 		} else if (error.response?.status === 408) {
-			toast.error(`Internal Server Error: ${error.response.data.message}`, {
+			toast.error(`Internal Server Error: ${error?.response?.data?.message}`, {
 				autoClose: 2000
 			})
 		} else if (error.response?.status === 500) {
-			toast.error(`Internal Server Error: ${error.response.data.message}`, {
+			toast.error(`Internal Server Error: ${error?.response?.data?.message}`, {
 				autoClose: 2000
 			})
 		}
@@ -179,23 +203,29 @@ export const getUser = id => async dispatch => {
 		console.log(error)
 
 		if (error.response?.status === 400) {
-			toast.error(`Oops! Something Wrong: ${error.response.data.message}`, {
+			toast.error(`Oops! Something Wrong: ${error?.response?.data?.message}`, {
 				autoClose: 2000
 			})
 		} else if (error.response?.status === 404) {
-			toast.error(`You don't have an Account: ${error.response.data.message}`, {
-				autoClose: 2000
-			})
+			toast.error(
+				`You don't have an Account: ${error?.response?.data?.message}`,
+				{
+					autoClose: 2000
+				}
+			)
 		} else if (error.response?.status === 409) {
-			toast.error(`Oops! You have no access: ${error.response.data.message}`, {
-				autoClose: 2000
-			})
+			toast.error(
+				`Oops! You have no access: ${error?.response?.data?.message}`,
+				{
+					autoClose: 2000
+				}
+			)
 		} else if (error.response?.status === 408) {
-			toast.error(`Internal Server Error: ${error.response.data.message}`, {
+			toast.error(`Internal Server Error: ${error?.response?.data?.message}`, {
 				autoClose: 2000
 			})
 		} else if (error.response?.status === 500) {
-			toast.error(`Internal Server Error: ${error.response.data.message}`, {
+			toast.error(`Internal Server Error: ${error?.response?.data?.message}`, {
 				autoClose: 2000
 			})
 		}
@@ -219,23 +249,29 @@ export const updateUser = (id, formData) => async dispatch => {
 		console.log(error)
 
 		if (error.response?.status === 400) {
-			toast.error(`Oops! Something Wrong: ${error.response.data.message}`, {
+			toast.error(`Oops! Something Wrong: ${error?.response?.data?.message}`, {
 				autoClose: 2000
 			})
 		} else if (error.response?.status === 404) {
-			toast.error(`You don't have an Account: ${error.response.data.message}`, {
-				autoClose: 2000
-			})
+			toast.error(
+				`You don't have an Account: ${error?.response?.data?.message}`,
+				{
+					autoClose: 2000
+				}
+			)
 		} else if (error.response?.status === 409) {
-			toast.error(`Oops! You have no access: ${error.response.data.message}`, {
-				autoClose: 2000
-			})
+			toast.error(
+				`Oops! You have no access: ${error?.response?.data?.message}`,
+				{
+					autoClose: 2000
+				}
+			)
 		} else if (error.response?.status === 408) {
-			toast.error(`Internal Server Error: ${error.response.data.message}`, {
+			toast.error(`Internal Server Error: ${error?.response?.data?.message}`, {
 				autoClose: 2000
 			})
 		} else if (error.response?.status === 500) {
-			toast.error(`Internal Server Error: ${error.response.data.message}`, {
+			toast.error(`Internal Server Error: ${error?.response?.data?.message}`, {
 				autoClose: 2000
 			})
 		}
@@ -258,23 +294,29 @@ export const resetPassword = id => async dispatch => {
 		console.log(error)
 
 		if (error.response?.status === 400) {
-			toast.error(`Oops! Something Wrong: ${error.response.data.message}`, {
+			toast.error(`Oops! Something Wrong: ${error?.response?.data?.message}`, {
 				autoClose: 2000
 			})
 		} else if (error.response?.status === 404) {
-			toast.error(`You don't have an Account: ${error.response.data.message}`, {
-				autoClose: 2000
-			})
+			toast.error(
+				`You don't have an Account: ${error?.response?.data?.message}`,
+				{
+					autoClose: 2000
+				}
+			)
 		} else if (error.response?.status === 409) {
-			toast.error(`Oops! You have no access: ${error.response.data.message}`, {
-				autoClose: 2000
-			})
+			toast.error(
+				`Oops! You have no access: ${error?.response?.data?.message}`,
+				{
+					autoClose: 2000
+				}
+			)
 		} else if (error.response?.status === 408) {
-			toast.error(`Internal Server Error: ${error.response.data.message}`, {
+			toast.error(`Internal Server Error: ${error?.response?.data?.message}`, {
 				autoClose: 2000
 			})
 		} else if (error.response?.status === 500) {
-			toast.error(`Internal Server Error: ${error.response.data.message}`, {
+			toast.error(`Internal Server Error: ${error?.response?.data?.message}`, {
 				autoClose: 2000
 			})
 		}
@@ -297,23 +339,29 @@ export const updatePassword = (id, formData) => async dispatch => {
 		console.log(error)
 
 		if (error.response?.status === 400) {
-			toast.error(`Oops! Something Wrong: ${error.response.data.message}`, {
+			toast.error(`Oops! Something Wrong: ${error?.response?.data?.message}`, {
 				autoClose: 2000
 			})
 		} else if (error.response?.status === 404) {
-			toast.error(`You don't have an Account: ${error.response.data.message}`, {
-				autoClose: 2000
-			})
+			toast.error(
+				`You don't have an Account: ${error?.response?.data?.message}`,
+				{
+					autoClose: 2000
+				}
+			)
 		} else if (error.response?.status === 409) {
-			toast.error(`Oops! You have no access: ${error.response.data.message}`, {
-				autoClose: 2000
-			})
+			toast.error(
+				`Oops! You have no access: ${error?.response?.data?.message}`,
+				{
+					autoClose: 2000
+				}
+			)
 		} else if (error.response?.status === 408) {
-			toast.error(`Internal Server Error: ${error.response.data.message}`, {
+			toast.error(`Internal Server Error: ${error?.response?.data?.message}`, {
 				autoClose: 2000
 			})
 		} else if (error.response?.status === 500) {
-			toast.error(`Internal Server Error: ${error.response.data.message}`, {
+			toast.error(`Internal Server Error: ${error?.response?.data?.message}`, {
 				autoClose: 2000
 			})
 		}

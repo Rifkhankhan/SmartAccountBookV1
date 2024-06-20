@@ -2,6 +2,7 @@
   "name": "accountbook",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://stharu.com",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.5.1",
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
@@ -32,9 +33,9 @@
     "react-redux": "^9.1.0",
     "react-router-dom": "^6.22.2",
     "react-scripts": "5.0.1",
-    "react-toastify": "^10.0.5",
     "react-spinners": "^0.13.8",
     "react-to-print": "^2.15.1",
+    "react-toastify": "^10.0.5",
     "recharts": "^2.12.2",
     "redux": "^5.0.1",
     "redux-thunk": "^3.1.0",

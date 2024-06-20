@@ -197,7 +197,7 @@ const AdvanceModel = ({
 					inputs.methode.value === 'transfer'
 						? 'Bank Transfer'
 						: inputs.methode.value === 'deposite'
-						? 'Bank Deposite'
+						? 'Bank Deposit'
 						: inputs.methode.value,
 				col5: inputs.narration.value
 			}
@@ -253,7 +253,7 @@ const AdvanceModel = ({
 					inputs.methode.value === 'transfer'
 						? 'Bank Transfer'
 						: inputs.methode.value === 'deposite'
-						? 'Bank Deposite'
+						? 'Bank Deposit'
 						: inputs.methode.value,
 				col5: inputs.narration.value
 			}
@@ -380,7 +380,7 @@ const AdvanceModel = ({
 									{inputs.methode.value === 'transfer'
 										? 'Bank Transfer'
 										: inputs.methode.value === 'deposite'
-										? 'Bank Deposite'
+										? 'Bank Deposit'
 										: inputs.methode.value}
 								</p>
 							</div>
@@ -414,7 +414,7 @@ const AdvanceModel = ({
 										src={
 											process.env.NODE_ENV === 'development'
 												? `http://localhost:5000/uploads/${clickedRow?.filename}`
-												: `https://smartaccountbookv1.onrender.com/uploads/${clickedRow?.filename}`
+												: `https://stharu.com/uploads/${clickedRow?.filename}`
 										}
 										alt="Uploaded"
 										style={{ width: '100%', height: '50vh' }}
@@ -530,7 +530,7 @@ const AdvanceModel = ({
 										<option value="cash">Cash</option>
 										<option value="cheque">Cheque</option>
 										<option value="transfer">Bank Transfer</option>
-										<option value="deposite">Bank Deposite</option>
+										<option value="deposite">Bank Deposit</option>
 									</select>
 								</div>
 							</div>
@@ -573,7 +573,7 @@ const AdvanceModel = ({
 										src={
 											process.env.NODE_ENV === 'development'
 												? `http://localhost:5000/uploads/${clickedRow?.filename}`
-												: `https://smartaccountbookv1.onrender.com/uploads/${clickedRow?.filename}`
+												: `https://stharu.com/uploads/${clickedRow?.filename}`
 										}
 										alt="Uploaded"
 										style={{ width: '100%', maxHeight: '50vh' }}
