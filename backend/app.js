@@ -45,38 +45,38 @@ app.use('/requests', RequestRouter)
 app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')))
 
 // Deployment settings for render
-// if (process.env.NODE_ENV === 'production') {
-// 	// Set static folder
-// 	app.use(express.static(path.join(__dirname, '..', 'frontend', 'build')))
-
-// 	// Any route that is not an API will be redirected to index.html
-// 	app.get('*', (req, res) =>
-// 		res.sendFile(
-// 			path.resolve(__dirname, '..', 'frontend', 'build', 'index.html')
-// 		)
-// 	)
-// } else {
-// 	app.get('/', (req, res) => {
-// 		res.send('API is Running!')
-// 	})
-// }
-
-// Deployment settings for cpanel
 if (process.env.NODE_ENV === 'production') {
-	// Set static folder to serve frontend build files
-	app.use(express.static(path.join(__dirname, '..', '..', 'public_html')))
+	// Set static folder
+	app.use(express.static(path.join(__dirname, '..', 'frontend', 'build')))
 
 	// Any route that is not an API will be redirected to index.html
-	app.get('*', (req, res) => {
+	app.get('*', (req, res) =>
 		res.sendFile(
-			path.resolve(__dirname, '..', '..', 'public_html', 'index.html')
+			path.resolve(__dirname, '..', 'frontend', 'build', 'index.html')
 		)
-	})
+	)
 } else {
 	app.get('/', (req, res) => {
 		res.send('API is Running!')
 	})
 }
+
+// Deployment settings for cpanel
+// if (process.env.NODE_ENV === 'production') {
+// 	// Set static folder to serve frontend build files
+// 	app.use(express.static(path.join(__dirname, '..', '..', 'public_html')))
+
+// 	// Any route that is not an API will be redirected to index.html
+// 	app.get('*', (req, res) => {
+// 		res.sendFile(
+// 			path.resolve(__dirname, '..', '..', 'public_html', 'index.html')
+// 		)
+// 	})
+// } else {
+// 	app.get('/', (req, res) => {
+// 		res.send('API is Running!')
+// 	})
+// }
 
 // Express Server
 const server = app.listen(PORT, () => {
