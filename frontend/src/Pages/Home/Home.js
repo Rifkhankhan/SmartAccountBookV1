@@ -643,14 +643,14 @@ const Home = () => {
 				</div>
 			</section>
 
-			{showModal && (
+			{/* {showModal && (
 				<ExpanseModel
 					clickedRow={clickedRow}
 					showModal={showModal}
 					closeHandler={handleExpenseModel}
 					deleteHandler={deleteExpenseHandler}
 				/>
-			)}
+			)} */}
 
 			{showPasswordModel && (
 				<ResetPasswordModel
