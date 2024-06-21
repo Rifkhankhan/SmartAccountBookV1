@@ -414,7 +414,7 @@ const AdvanceModel = ({
 										src={
 											process.env.NODE_ENV === 'development'
 												? `http://localhost:5000/uploads/${clickedRow?.filename}`
-												: `https://stharu.com/uploads/${clickedRow?.filename}`
+												: `/uploads/${clickedRow?.filename}`
 										}
 										alt="Uploaded"
 										style={{ width: '100%', height: '50vh' }}
