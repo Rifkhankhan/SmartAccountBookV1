@@ -396,7 +396,7 @@ const ReceiptModel = ({
 							{inputs.requestForm.value === 'cash' && (
 								<div className="col-12 col-md-3">
 									<label style={{ fontWeight: 600, fontSize: '1.2em' }}>
-										Transfer Methode
+										Transfer Method
 									</label>
 									<p>
 										{inputs.methode.value === 'transfer'
