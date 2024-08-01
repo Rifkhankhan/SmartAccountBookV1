@@ -149,8 +149,8 @@ export const autoLogin = () => async dispatch => {
 		const { data } = await AuthApi.autoLogin()
 
 		if (data.success) {
-			dispatch(authActions.autoLogin(data))
 		}
+		dispatch(authActions.autoLogin(data))
 	} catch (error) {
 		if (error.response?.status === 400) {
 			toast.error(`Oops! Something Wrong: ${error?.response?.data?.message}`, {

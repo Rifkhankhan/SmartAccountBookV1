@@ -11,6 +11,8 @@ const Login = props => {
 	const [formValid, setFormValid] = useState(true)
 	const navigate = useNavigate()
 	const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
+
+	console.log(isAuthenticated)
 	const isLoading = useSelector(state => state.auth.isLoading)
 
 	const initialInputsState = {
